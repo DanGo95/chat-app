@@ -1,0 +1,4 @@
+:host ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid .mat-form-field-outline-thick,
+:host ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label, .mat-error {
+      color: white !important;
+}
