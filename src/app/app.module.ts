@@ -11,6 +11,8 @@ import { ComponentsModule } from './components/components.module';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 
+import { SwiperModule } from 'swiper/angular';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +25,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     ComponentsModule,
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

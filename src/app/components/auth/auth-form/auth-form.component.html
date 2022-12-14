@@ -1,39 +1,12 @@
 <div class="container-fluid overflow-hidden">
   <div class="row min-vh-100 align-items-center">
-    <div class="col-md-10 col-sm-12 col-lg-6 col-12 mt-5">
-      <div class="mt-5 p-3">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <p class="fs-1 text-center fw-bold mb-5 text-white title-sofia">Chat-app</p>
-          <div class="mb-3">
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Email</mat-label>
-              <input class="text-white" formControlName="email" type="email" matInput placeholder="example@example.com">
-              <mat-error class="text-center text-white" *ngIf="invalidInput('email')">
-                El email es obligatorio.
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="mb-4">
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Password</mat-label>
-              <input class="text-white" formControlName="password" type="password" matInput placeholder="Se distingue las minúsculas y mayúsculas">
-              <mat-error class="text-center text-white" *ngIf="invalidInput('password')">
-                El password es obligatorio.
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="d-grid gap-2">
-            <button *ngIf="!isSignUp" mat-stroked-button type="submit" class="p-3 fs-6 text-white-50">Iniciar sesión</button>
-            <button *ngIf="isSignUp" mat-stroked-button type="submit" class="p-3 fs-6 text-white-50">Crear cuenta</button>
-          </div>
-        </form>
+    <div class="col-md-10 col-sm-12 col-lg-6 col-12 mx-auto text-center">
+      <div class="p-3">
+        <p class="fs-1 text-center fw-bold mb-5 text-white title-sofia">Chat-app</p>
+        <button (click)="login()" mat-stroked-button class="p-3 fs-6 text-white-50 text-center mx-auto">
+          <mat-icon>account_circle</mat-icon> Iniciar sesión
+        </button>
       </div>
-    </div>
-    <div class="mt-auto p-2 d-grid gap-2">
-      <button *ngIf="isSignUp" mat-stroked-button [routerLink]="['/login']" class="text-decoration-none text-center text-white-50 p-3">¿Ya posees una cuenta? Inicia sesión</button>
-      <button *ngIf="!isSignUp" mat-stroked-button [routerLink]="['/register']" class="text-decoration-none text-center text-white-50 p-3">¿No posees una cuenta? Registrate</button>
-      <!-- <a *ngIf="isSignUp" [routerLink]="['/login']" class="d-flex justify-content-end text-decoration-none text-white-50">Already a member? Login here</a> -->
-      <!-- <a *ngIf="!isSignUp" [routerLink]="['/register']" class="d-flex justify-content-end text-decoration-none text-white-50">Don't have an account? Create one here</a> -->
     </div>
   </div>
 </div>

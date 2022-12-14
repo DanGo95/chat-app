@@ -9,12 +9,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+import { ChatComponent } from './chat/chat.component';
+import { ChatMessageComponent } from './chat/chat-message/chat-message.component';
 
 
 
 @NgModule({
   declarations: [
-    AuthFormComponent
+    AuthFormComponent,
+    ChatComponent,
+    ChatMessageComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
   ]
 })
 export class ComponentsModule { }

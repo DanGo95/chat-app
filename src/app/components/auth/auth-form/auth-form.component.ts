@@ -12,86 +12,16 @@ import Swal from 'sweetalert2';
 })
 export class AuthFormComponent implements OnInit {
 
-  isSignUp = false;
-  form!: FormGroup;
+  constructor( private router: Router, private auth: AuthService ) { }
 
-  constructor( private fb: FormBuilder, private router: Router, private auth: AuthService ) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    if ( this.router.url === '/register' ) {
-      this.isSignUp = true;
-    }
 
-    this.createForm();
+  login() {
+    this.auth.login().then(
+      res => this.router.navigateByUrl('home')
+    )
   }
 
-  createForm() {
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
-
-  invalidForm() {
-    return Object.values(this.form.controls).forEach( control => control.markAsTouched());
-  }
-
-  invalidInput(input: string): any {
-    return this.form.get(input)?.invalid && this.form.get(input)?.touched;
-  }
-
-  login(): any {
-    this.auth.login(this.form.value).subscribe({
-      next: (resp: any) => {
-        Swal.close();
-        this.router.navigateByUrl('/');
-      },
-      error: (err: any) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'User/password invalid'
-        });
-      }
-    });
-  }
-
-  register() {
-    this.auth.register(this.form.value).subscribe({
-      next: (resp: any) => {
-        Swal.close();
-        this.router.navigateByUrl('/login');
-      },
-      error: (err: any) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error creating account',
-          text: err.message,
-          confirmButtonColor: '#ff0253'
-        });
-      }
-    });
-  }
-
-  onSubmit() {
-    if ( this.form.invalid ) {
-      this.invalidForm();
-      return;
-    }
-
-    Swal.fire({
-      allowOutsideClick: false,
-      icon: 'info',
-      text: 'Espere por favor...',
-    });
-
-    Swal.showLoading(Swal.getConfirmButton());
-
-    if ( this.isSignUp ) {
-      this.register();
-    } else {
-      this.login();
-    }
-  }
 
 }

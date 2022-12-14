@@ -1,0 +1,27 @@
+<div class="container overflow-hidden">
+    <div class="col-lg-6 col-md-8 col-sm-12 col-12 mx-auto">
+        <div class="row justify-content-end me-3 mt-3">
+            <button (click)="logout()" mat-mini-fab color="primary" class="mt-2">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </div>
+        <div class="card bg-dark px-3 mt-4">
+            <div class="row app-mensajes mt-3" id="app-messages">
+                <app-chat-message [messages]="messages"></app-chat-message>
+            </div>
+            <div class="row mt-3">
+                <div class="col-10">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Enviar mensaje</mat-label>
+                        <input #messageInput (keyup.enter)="addMessage(messageInput.value)" class="text-white" type="text" matInput placeholder="Enviar mensaje...">
+                    </mat-form-field>
+                </div>
+                <div class="col-2">
+                    <button (click)="addMessage(messageInput.value)" mat-mini-fab color="primary" class="mt-2">
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
